@@ -1,66 +1,36 @@
 import re
-import argparse
-from collections import defaultdict
+import pandas as pd
+from datetime import datetime
 
+def parse_logs(log_file):
+    pattern = r'(?P<ip>\d+\.\d+\.\d+\.\d+) - - \[(?P<timestamp>[^\]]+)\] "(?P<request>.*?)" (?P<status>\d+) (?P<size>\d+|-)'
+    data = []
 
-def parse_log_file(file_path):
-    """
-    Parses a log file and extracts potential security incidents.
+    with open(log_file, 'r') as f:
+        for line in f:
+            match = re.search(pattern, line)
+            if match:
+                data.append(match.groupdict())
+
+    return pd.DataFrame(data)
+
+def analyze_logs(df):
+    # Convert timestamp to datetime
+    df['timestamp'] = pd.to_datetime(df['timestamp'], format='%d/%b/%Y:%H:%M:%S %z')
     
-    Args:
-        file_path (str): Path to the log file.
+    # Analyze suspicious activity
+    failed_attempts = df[df['status'] == '401']
+    top_ips = df['ip'].value_counts().head(10)
     
-    Returns:
-        dict: Summary of suspicious activities.
-    """
-    suspicious_ips = defaultdict(int)
-    failed_login_pattern = r"(Failed password for).*?from (\d+\.\d+\.\d+\.\d+)"
-
-    try:
-        with open(file_path, 'r') as log_file:
-            for line in log_file:
-                match = re.search(failed_login_pattern, line)
-                if match:
-                    ip_address = match.group(2)
-                    suspicious_ips[ip_address] += 1
-    except FileNotFoundError:
-        print(f"Error: The file {file_path} was not found.")
-        return {}
-
-    return suspicious_ips
-
-
-def generate_report(suspicious_ips):
-    """
-    Generates a report of suspicious activities.
-    
-    Args:
-        suspicious_ips (dict): Dictionary of IPs and their failed login counts.
-    """
-    print("\nSuspicious Activity Report:")
-    print("-" * 30)
-    for ip, count in suspicious_ips.items():
-        print(f"IP Address: {ip}, Failed Login Attempts: {count}")
-
+    return failed_attempts, top_ips
 
 def main():
-    """
-    Main function to handle user input and run the log analyzer.
-    """
-    parser = argparse.ArgumentParser(description="Analyze log files for suspicious activities.")
-    parser.add_argument(
-        "file", 
-        type=str, 
-        help="Path to the log file to analyze."
-    )
-    args = parser.parse_args()
-
-    suspicious_ips = parse_log_file(args.file)
-    if suspicious_ips:
-        generate_report(suspicious_ips)
-    else:
-        print("No suspicious activities found.")
-
+    log_file = "access.log"  # Replace with your log file path
+    logs_df = parse_logs(log_file)
+    failed_attempts, top_ips = analyze_logs(logs_df)
+    
+    print("Top Suspicious IPs:\n", top_ips)
+    print("Failed Login Attempts:\n", failed_attempts)
 
 if __name__ == "__main__":
     main()
