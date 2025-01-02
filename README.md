@@ -5,7 +5,7 @@
 
 **Log-Analyzer** is a script to parse system or web server logs for suspicious activities.
 
-## Script Scope
+## Project Scope
 
 - **Objective**: Automate the analysis of logs to identify suspicious activities like brute force attacks, failed login attempts, or access anomalies.
 - **Input**: Log files (e.g., system logs, web server logs like Apache or NGINX logs).
