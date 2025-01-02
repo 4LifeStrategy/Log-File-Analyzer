@@ -1,6 +1,6 @@
-<div align="center">
-  <img src="4LifeStrategy Logo Center.png" alt="4LifeStrategy Logo" width="200" style="vertical-align:middle;">
-  <span style="display:inline-block; vertical-align:middle; margin-left:10px; font-weight:bold; font-size:24px;">Log-Aalyzer</span>
+<div align="center" style="white-space: nowrap;">
+  <img src="4LifeStrategy Logo Center.png" alt="4LifeStrategy Logo" width="100" style="display:inline-block; vertical-align:middle; margin-right:10px;">
+  <h2 style="display:inline-block; margin:0; vertical-align:middle;">Log-Analyzer</h2>
 </div>
 
 **Log-Analyzer** is a script to parse system or web server logs for suspicious activities.
