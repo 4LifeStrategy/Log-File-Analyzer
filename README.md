@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="4LifeStrategy Logo Center.png" alt="4LifeStrategy Logo" width="300" style="vertical-align:middle;">
+  <img src="4LifeStrategy Logo Center.png" alt="4LifeStrategy Logo" width="200" style="vertical-align:middle;">
   <span style="display:inline-block; vertical-align:middle; margin-left:10px; font-weight:bold; font-size:24px;">Log-Aalyzer</span>
 </div>
 
