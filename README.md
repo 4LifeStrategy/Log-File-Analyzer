@@ -1,9 +1,11 @@
 <div align="center" style="white-space: nowrap;">
   <img src="https://github.com/4LifeStrategy/4LifeStrategy/blob/88ffe3009f1399de4502d4d5641c8f7a0fd56852/4LifeStrategy%20Logo%20Center.png" alt="4LifeStrategy Logo" width="100" style="display:inline-block; vertical-align:middle; margin-right:10px;">
-  <h1 style="margin:0; vertical-align:middle;">Log-Analyzer</h1>
+  <h1 style="margin:0; vertical-align:middle;">Log File Analyzer</h1>
 </div>
 
-**Log-Analyzer** is a script to parse system or web server logs for suspicious activities.
+## Description
+
+The **Log File Analyzer** is a Python-based tool designed to parse, analyze, and generate summaries from system log files. It identifies key metrics such as the most frequent IP addresses and actions to aid in log analysis for cybersecurity tasks.
 
 ## Project Scope
 
@@ -17,27 +19,33 @@
 
 ## Tools
 
-- **Language**: Python
+- **Language**: Python 3.13.1
 - **Libraries**:
   - re (for regex pattern matching)
   - pandas (for data manipulation and analysis)
-  - matplotlib or seaborn (for visualizing patterns)
-  - argparse (for command-line functionality)
-  - datetime (for timestamp analysis)
+  - matplotlib (for visualizing patterns)
 
 ## Workflow
 
 1. **Input Log File**:
-    - Use a sample log file for testing (e.g., /var/log/auth.log for Linux or a sample Apache access log file).
+    - Place your log file in the logs/ directory.
 
-2. **Log Parsing**:
-    - Identify the format of your log file and write a parser using regex or string splitting.
+2. **Run the analyzer**:
 
-3. **Data Analysis**:
-    - Extract and analyze key fields such as timestamps, IP addresses, and error codes.
+        python analyzer.py
 
-4. **Reporting**:
-    - Summarize findings into readable reports (e.g., most frequent IPs, time of peak activity).
+3. **Evaluate Output**:
+    - Check the generated report in the output/ directory.
 
-5. **Visualization**:
-    - Create graphs to show login attempts over time or geographic locations of IPs.
+## Sample Output
+
+      Log Analysis Report
+      ===================
+      Total Logs: 10
+      Top 5 IPs:
+        192.168.1.2: 4 occurrences
+        192.168.1.1: 2 occurrences
+
+      Top 5 Actions:
+        Login Failed: 5 occurrences
+        Login Successful: 5 occurrences
