@@ -20,10 +20,17 @@ The **Log File Analyzer** is a Python-based tool designed to parse, analyze, and
 ## Tools
 
 - **Language**: Python 3.13.1
+- **Package Installer**: pip
 - **Libraries**:
   - re (for regex pattern matching)
   - pandas (for data manipulation and analysis)
   - matplotlib (for visualizing patterns)
+
+## How to install on Arch
+Install python package installer and libraries: python, python pip, python-pandas, python-matplotlib.
+**Note**: Python libraries are installed by using pacman -S python-"python_library", while other Linux distribution might use: pip install "python_library"
+
+    sudo pacman -S python python-pip python-pandas python-matplotlib
 
 ## Workflow
 
