@@ -20,7 +20,7 @@ The **Log File Analyzer** is a Python-based tool designed to parse, analyze, and
 ## Tools
 
 - **Language**: Python 3.13.1
-- **Package Installer**: pip
+- **Python Package Installer**: pip
 - **Libraries**:
   - re (for regex pattern matching)
   - pandas (for data manipulation and analysis)
