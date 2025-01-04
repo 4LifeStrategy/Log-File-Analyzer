@@ -66,7 +66,8 @@ if __name__ == "__main__":
     # Define input and output paths
     input_log_file = "logs/sample.log"
     output_summary_file = "output/summary_report.txt"
-    
+    ## Next enhancement: grip the steps in to another function.
+    ## Test the each fuction/steps in pytest
     # Step 1: Parse the log file
     log_data = parse_log(input_log_file)
     
